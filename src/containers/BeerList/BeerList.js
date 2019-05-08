@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 import { Table } from 'reactstrap';
-import Toolbar from '../../components/Toolbar/Toolbar';
 
 import classes from './BeerList.css';
 
@@ -17,15 +17,18 @@ class BeerList extends Component {
     componentDidMount() {
         axios.get(`https://api.punkapi.com/v2/beers`)
             .then(res => {
-                const beers = res.data.map(beer => ({ name: beer.name, description: beer.description, image: beer.image_url, abv: beer.abv }));
+                const beers = res.data.map(beer => ({ id: beer.id, name: beer.name, description: beer.description, image: beer.image_url, abv: beer.abv }));
                 this.setState({ beers });
             });
     }
 
     render() {
+        const beerSelected = (beer) => {
+            this.props.beerSelect(beer);
+            return <Redirect to='/beerdetails' />
+        }
         return (
             <div>
-                <Toolbar />
                 <div className={classes.BeerList}>
                     <Table hover>
                         <thead>
@@ -39,21 +42,21 @@ class BeerList extends Component {
                         <tbody>
                             {this.state.beers.map(function (beer, index) {
                                 return (
-                                    <tr key={index}>
+                                    // <Link to='/beerdetails' key={index}>
+                                    <tr key={index} onClick={() => beerSelected(beer.id)}>
                                         <th scope="row">{beer.name}</th>
                                         <td>{beer.description}</td>
                                         <td><img className={classes.BeerImage} src={beer.image} alt="BeerImage"></img></td>
                                         <td>{beer.abv}</td>
                                     </tr>
+                                    // </Link>
                                 )
                             }
                             )}
                         </tbody>
                     </Table>
                 </div>
-
             </div>
-
         );
     }
 }
