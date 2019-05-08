@@ -6,7 +6,7 @@ class Hops extends Component {
         hops: [],
         hop: {}
     }
-    
+
     onStateChange(hop) {
         let middleHopCanChange = true;
         let endHopCanChange = true;
@@ -35,6 +35,8 @@ class Hops extends Component {
         }
         this.setState({ hop: hop })
     }
+    
+    
 
     render() {
         this.state.hops = this.props.hops;

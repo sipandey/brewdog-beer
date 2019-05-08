@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Container, Row, Col} from 'reactstrap';
 import Hops from '../../components/Hops/Hops';
 import Malts from '../../components/Malts/Malts';
+import Method from '../../components/Method/Method';
 import classes from './BeerDetails.css';
 
 class BeerDetails extends Component {
@@ -32,11 +33,12 @@ class BeerDetails extends Component {
                 beerDetails[0].ingredients.malt.forEach(function (malt) {
                     malt.state = 'IDLE';
                 })
+                
                 this.setState({
                     beerDetails: beerDetails[0],
                     hops: beerDetails[0].ingredients.hops,
                     malts: beerDetails[0].ingredients.malt,
-                    method: beerDetails[0].method
+                    method: JSON.stringify(beerDetails[0].method)
                 });
                 console.log(beerDetails[0])
             });
@@ -46,10 +48,10 @@ class BeerDetails extends Component {
         return (
             <div className={classes.BeerDetails}>
                 <Container>
-                    <Row>
+                    {/* <Row>
                         <Col md="3">Id</Col>
                         <Col>{this.state.beerDetails.id}</Col>
-                    </Row>
+                    </Row> */}
                     <Row>
                         <Col md="3">Image</Col>
                         <Col><img className={classes.BeerImage} src={this.state.beerDetails.image_url} alt="beerimage" /></Col>
@@ -76,6 +78,12 @@ class BeerDetails extends Component {
                         <Col md="3">Malts</Col>
                         <Col>
                             <Malts malts={this.state.malts} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="3">Method</Col>
+                        <Col>
+                            <Method method={this.state.method} />
                         </Col>
                     </Row>
                 </Container>
