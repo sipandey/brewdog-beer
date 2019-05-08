@@ -1,0 +1,10 @@
+.BeerDetails {
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 2;
+}
+
+.BeerImage {
+    height: 150px;
+}

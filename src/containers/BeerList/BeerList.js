@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
 import classes from './BeerList.css';
@@ -25,7 +24,6 @@ class BeerList extends Component {
     render() {
         const beerSelected = (beer) => {
             this.props.beerSelect(beer);
-            return <Redirect to='/beerdetails' />
         }
         return (
             <div>
@@ -42,14 +40,12 @@ class BeerList extends Component {
                         <tbody>
                             {this.state.beers.map(function (beer, index) {
                                 return (
-                                    // <Link to='/beerdetails' key={index}>
                                     <tr key={index} onClick={() => beerSelected(beer.id)}>
                                         <th scope="row">{beer.name}</th>
                                         <td>{beer.description}</td>
                                         <td><img className={classes.BeerImage} src={beer.image} alt="BeerImage"></img></td>
                                         <td>{beer.abv}</td>
                                     </tr>
-                                    // </Link>
                                 )
                             }
                             )}

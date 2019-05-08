@@ -19,13 +19,10 @@ class Main extends Component {
     }
 
     render() {
-        
-
         return (
             <div>
                 <Toolbar />
                 <Switch>
-                    
                     <Route path="/beerdetails" component={ () => <BeerDetails beerId={this.state.selectedBeerId}/>} />
                     <Route exact path="/" component={() => <BeerList beerSelect={this.onBeerSelected} />} />
                 </Switch>
