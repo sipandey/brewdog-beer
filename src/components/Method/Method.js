@@ -22,7 +22,7 @@ class Method extends Component {
                             <td>{met.temp.value}</td>
                             <td>{met.temp.unit}</td>
                             <td>{met.duration}</td>
-                            <td><Button color="info" onClick={() => this.onStateChange(met)}>IDLE</Button></td>
+                            <td><Button color="info">IDLE</Button></td>
                         </tr>
                     )
                 }))
@@ -37,7 +37,7 @@ class Method extends Component {
                                     <td>{m}</td>
                                     <td>{meth[met].value}</td>
                                     <td colSpan="2">{meth[met].unit}</td>
-                                    <td><Button color="info" onClick={() => this.onStateChange(met)}>IDLE</Button></td>
+                                    <td><Button color="info">IDLE</Button></td>
                                 </tr>
                             )
                         })
@@ -49,7 +49,7 @@ class Method extends Component {
                         <tr key="random">
                             <td>{m}</td>
                             <td colSpan="3">{meth}</td>
-                            <td><Button color="info" onClick={() => this.onStateChange()}>IDLE</Button></td>
+                            <td><Button color="info">IDLE</Button></td>
                         </tr>
                     )
                 }
