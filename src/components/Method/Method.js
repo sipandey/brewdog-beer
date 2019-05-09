@@ -8,11 +8,8 @@ class Method extends Component {
         method: null
     }
 
-    componentDidMount() {
-        console.log(this.props.method)
-    }
-
     renderObject() {
+        const method = JSON.parse(this.props.method);
         return (Object.keys(method).map(function (m, index) {
             if (method[m] instanceof Array) {
                 return (method[m].map(function (met, index) {
@@ -53,7 +50,6 @@ class Method extends Component {
                         </tr>
                     )
                 }
-
             }
         }))
     }
@@ -65,7 +61,6 @@ class Method extends Component {
                 <div></div>
             )
         } else {
-
             return (
                 <Table>
                     <tbody>
@@ -74,7 +69,6 @@ class Method extends Component {
                 </Table>
             )
         }
-
     }
 }
 

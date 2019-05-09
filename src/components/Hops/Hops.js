@@ -3,7 +3,7 @@ import { Table, Button } from 'reactstrap';
 class Hops extends Component {
 
     state = {
-        hops: [],
+        hops: this.props.hops ? this.props.hops : [],
         hop: {}
     }
 
@@ -36,10 +36,7 @@ class Hops extends Component {
         this.setState({ hop: hop })
     }
     
-    
-
     render() {
-        this.state.hops = this.props.hops;
         return (
             <Table><tbody>{this.props.hops.map(function (hop, index) {
                 return (
